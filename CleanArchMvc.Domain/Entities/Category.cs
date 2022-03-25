@@ -1,3 +1,5 @@
+using CleanArchMvc.Domain.Validation;
+
 namespace CleanArchMvc.Domain.Entities
 {
     public sealed class Category
@@ -14,6 +16,11 @@ namespace CleanArchMvc.Domain.Entities
         public Category(int id, string name)
         {
             DomainExceptionValidation.When(id < 0, "Invalid ID");
+            ValidateDomain(name);
+        }
+
+        public void update(string name)
+        {
             ValidateDomain(name);
         }
 
