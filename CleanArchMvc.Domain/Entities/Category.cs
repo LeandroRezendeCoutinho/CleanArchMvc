@@ -18,7 +18,7 @@ namespace CleanArchMvc.Domain.Entities
             ValidateDomain(name);
         }
 
-        public void update(string name)
+        public void Update(string name)
         {
             ValidateDomain(name);
         }
