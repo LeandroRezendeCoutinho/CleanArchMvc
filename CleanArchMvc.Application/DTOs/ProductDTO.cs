@@ -3,19 +3,19 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace CleanArchMvc.Application.DTOs
 {
-    class ProductDTO
+    public class ProductDTO
     {
         public int Id { get; set; }
 
         [Required(ErrorMessage = "The name is required")]
         [MinLength(3)]
         [MaxLength(100)]
-        public string Name { get; set; }
+        public string? Name { get; set; }
 
         [Required(ErrorMessage = "The description is required")]
         [MinLength(5)]
         [MaxLength(200)]
-        public string Description { get; set; }
+        public string? Description { get; set; }
 
         [Required(ErrorMessage = "The price is required")]
         [Column(TypeName = "decimal(18,2)")]
@@ -28,7 +28,7 @@ namespace CleanArchMvc.Application.DTOs
         public int Stock { get; set; }
 
         [MaxLength(250)]
-        public string Image { get; set; }
+        public string? Image { get; set; }
         public int CategoryId { get; set; }
     }
 }
