@@ -3,7 +3,7 @@ using MediatR;
 
 namespace CleanArchMvc.Application.Products.Queries
 {
-    public class GetProductQuery : IRequest<IEnumerable<Product>>
+    public class GetProductsQuery : IRequest<IEnumerable<Product>>
     {
 
     }
