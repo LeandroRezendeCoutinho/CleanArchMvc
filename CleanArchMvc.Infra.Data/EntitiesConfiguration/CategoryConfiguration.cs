@@ -2,7 +2,7 @@ using CleanArchMvc.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace CleanArchMvc.Infra.Data.Context
+namespace CleanArchMvc.Infra.Data.EntitiesConfiguration
 {
     public class CategoryConfiguration : IEntityTypeConfiguration<Category>
     {
@@ -10,6 +10,9 @@ namespace CleanArchMvc.Infra.Data.Context
         {
             builder.HasKey(x => x.Id);
             builder.Property(x => x.Name).HasMaxLength(100).IsRequired();
+            builder.HasData(
+                new Category(1, "Honda"),
+                new Category(2, "Yamaha"));
         }
     }
 }
