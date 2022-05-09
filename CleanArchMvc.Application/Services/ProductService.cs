@@ -63,18 +63,6 @@ namespace CleanArchMvc.Application.Services
             var result = await _mediator.Send(productByIdQuery);
 
             return _mapper.Map<ProductDTO>(result);
-        }
-
-        public async Task<ProductDTO> GetProductCategory(int? id)
-        {
-            var productByIdQuery = new GetProductByIdQuery(id.Value);
-
-            if (productByIdQuery == null)
-                throw new Exception("Entity not found");
-
-            var result = await _mediator.Send(productByIdQuery);
-
-            return _mapper.Map<ProductDTO>(result);
-        }
+        }        
     }
 }
