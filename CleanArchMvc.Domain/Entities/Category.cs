@@ -10,12 +10,15 @@ namespace CleanArchMvc.Domain.Entities
         public Category(string name)
         {
             ValidateDomain(name);
+            Name = name;
         }
 
         public Category(int id, string name)
         {
             DomainExceptionValidation.When(id < 0, "Invalid ID");
             ValidateDomain(name);
+            Id = id;
+            Name = name;
         }
 
         public void Update(string name)
