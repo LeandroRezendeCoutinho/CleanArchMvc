@@ -21,7 +21,7 @@ namespace CleanArchMvc.Application.Products.Handlers
 
             if (product == null)
             {
-                throw new ArgumentNullException($"Entity could not be found");
+                throw new ArgumentNullException("Entity could not be found");
             }
             else
             {                

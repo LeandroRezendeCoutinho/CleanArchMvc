@@ -18,16 +18,9 @@ namespace CleanArchMvc.Application.Products.Handlers
         {
             var product = await _productRepository.GetByIdAsync(request.Id);
 
-            if (product == null)
-            {
-                throw new ArgumentNullException(nameof(product));
-            }
-            else
-            {
-                var result = await _productRepository.RemoveAsync(product);
-                return result;
-            }
+            if (product == null) throw new ApplicationException("Product could not be found");
 
+            return await _productRepository.RemoveAsync(product);
         }
     }
 }
