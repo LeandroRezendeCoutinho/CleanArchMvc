@@ -7,7 +7,6 @@
   <ItemGroup>
     <Folder Include="EntitiesConfiguration" />
     <Folder Include="Migrations\" />
-    <Folder Include="NovaPasta\" />
     <Folder Include="Repositories" />
   </ItemGroup>
 
