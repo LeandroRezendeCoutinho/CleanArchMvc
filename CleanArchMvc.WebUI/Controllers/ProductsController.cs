@@ -1,5 +1,6 @@
 using CleanArchMvc.Application.DTOs;
 using CleanArchMvc.Application.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 
@@ -71,6 +72,7 @@ public class ProductsController : Controller
         return View(productDto);
     }
 
+    [Authorize(Roles ="Admin")]
     [HttpGet]
     public async Task<IActionResult> Delete(int? id)
     {
@@ -82,7 +84,7 @@ public class ProductsController : Controller
     }
 
     [HttpPost, ActionName("Delete")]
-    public async Task<IActionResult> DeleteConfitmed(int? id)
+    public async Task<IActionResult> DeleteConfirmed(int? id)
     {
         if (id == null) return NotFound();
 
