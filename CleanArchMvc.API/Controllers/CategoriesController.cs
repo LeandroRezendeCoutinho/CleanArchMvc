@@ -46,5 +46,19 @@ namespace CleanArchMvc.API.Controllers
             await _categoryService.Add(categoryDTO);
             return new CreatedAtRouteResult("GetCategory", new { id = categoryDTO.Id }, categoryDTO);
         }
+
+        [HttpPut]
+        public async Task<ActionResult> Put(int id,[FromBody] CategoryDTO categoryDTO)
+        {
+            if (id != categoryDTO.Id)
+                return BadRequest();
+            
+            if (categoryDTO == null)
+                return BadRequest();
+
+            await _categoryService.Update(categoryDTO);
+
+            return Ok(categoryDTO);
+        }
     }
 }
