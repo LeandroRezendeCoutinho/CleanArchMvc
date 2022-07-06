@@ -19,7 +19,7 @@ namespace CleanArchMvc.Application.Services
             _mapper = mapper;
         }
 
-        public async Task<IEnumerable<ProductDTO>> GetProducts()
+        public async Task<IEnumerable<ProductDTO>> GetProductsAsync()
         {
             var productsQuery = new GetProductsQuery();
 
@@ -31,19 +31,19 @@ namespace CleanArchMvc.Application.Services
             return _mapper.Map<IEnumerable<ProductDTO>>(result);
         }
 
-        public async Task Add(ProductDTO productDto)
+        public async Task AddAsync(ProductDTO productDto)
         {
             var productCreateCommand = _mapper.Map<ProductCreateCommand>(productDto);
             await _mediator.Send(productCreateCommand);
         }
 
-        public async Task Update(ProductDTO productDto)
+        public async Task UpdateAsync(ProductDTO productDto)
         {
             var productUpdateCommand = _mapper.Map<ProductUpdateCommand>(productDto);
             await _mediator.Send(productUpdateCommand);
         }
 
-        public async Task Delete(int? id)
+        public async Task DeleteAsync(int? id)
         {
             var productRemoveCommand = new ProductRemoveCommand(id.Value);
             if (productRemoveCommand == null)
@@ -52,7 +52,7 @@ namespace CleanArchMvc.Application.Services
             await _mediator.Send(productRemoveCommand);
         }
 
-        public async Task<ProductDTO> GetById(int? id)
+        public async Task<ProductDTO> GetByIdAsync(int? id)
         {
             var productByIdQuery = new GetProductByIdQuery(id.Value);
 

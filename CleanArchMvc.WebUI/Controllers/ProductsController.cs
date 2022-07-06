@@ -23,7 +23,7 @@ public class ProductsController : Controller
     [HttpGet]
     public async Task<IActionResult> Index()
     {
-        var products = await _productService.GetProducts();
+        var products = await _productService.GetProductsAsync();
         return View(products);
     }
 
@@ -40,7 +40,7 @@ public class ProductsController : Controller
     {
         if (ModelState.IsValid)
         {
-            await _productService.Add(product);
+            await _productService.AddAsync(product);
             return RedirectToAction(nameof(Index));
         }
 
@@ -52,7 +52,7 @@ public class ProductsController : Controller
     {
         if (id == null) return NotFound();
 
-        var productDto = await _productService.GetById(id);
+        var productDto = await _productService.GetByIdAsync(id);
 
         if (productDto == null) return NotFound();
 
@@ -65,7 +65,7 @@ public class ProductsController : Controller
     {
         if (ModelState.IsValid)
         {
-            await _productService.Update(productDto);
+            await _productService.UpdateAsync(productDto);
             return RedirectToAction(nameof(Index));
         }
 
@@ -78,7 +78,7 @@ public class ProductsController : Controller
     {
         if (id == null) return NotFound();
 
-        var productDto = await _productService.GetById(id);
+        var productDto = await _productService.GetByIdAsync(id);
 
         return View(productDto);
     }
@@ -88,7 +88,7 @@ public class ProductsController : Controller
     {
         if (id == null) return NotFound();
 
-        await _productService.Delete(id);
+        await _productService.DeleteAsync(id);
 
         return RedirectToAction(nameof(Index));
     }
@@ -98,7 +98,7 @@ public class ProductsController : Controller
     {
         if (id == null) return NotFound();
         
-        var productDto = await _productService.GetById(id);
+        var productDto = await _productService.GetByIdAsync(id);
 
         if (productDto == null) return NotFound();
 
