@@ -1,11 +1,13 @@
 using CleanArchMvc.Application.DTOs;
 using CleanArchMvc.Application.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CleanArchMvc.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class CategoriesController : ControllerBase
     {
         private readonly ICategoryService _categoryService;
@@ -48,11 +50,11 @@ namespace CleanArchMvc.API.Controllers
         }
 
         [HttpPut]
-        public async Task<ActionResult> Put(int id,[FromBody] CategoryDTO categoryDTO)
+        public async Task<ActionResult> Put(int id, [FromBody] CategoryDTO categoryDTO)
         {
             if (id != categoryDTO.Id)
                 return BadRequest();
-            
+
             if (categoryDTO == null)
                 return BadRequest();
 
