@@ -32,13 +32,10 @@ namespace CleanArchMvc.API
         {
             services.AddInfrastructureAPI(Configuration);
             services.AddInfrastructureJWT(Configuration);
+            services.AddInfrastructureSwagger();
             services.AddControllers().AddJsonOptions(options =>
             {
                 options.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.Preserve;
-            });
-            services.AddSwaggerGen(c =>
-            {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "CleanArchMvc.API", Version = "v1" });
             });
         }
 
@@ -54,7 +51,11 @@ namespace CleanArchMvc.API
 
             app.UseHttpsRedirection();
 
+            app.UseStatusCodePages();
+
             app.UseRouting();
+
+            app.UseAuthentication();
 
             app.UseAuthorization();
 
